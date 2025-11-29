@@ -1,0 +1,58 @@
+# Built application files
+*.apk
+*.ap_
+*.aab
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+build/
+
+# Gradle files
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log files
+*.log
+
+# Android Studio
+.idea/
+*.iml
+*.iws
+.DS_Store
+
+# Kotlin
+*.kotlin_module
+
+# Jetpack Compose previews
+captures/
+
+# Others
+.cxx/
+.externalNativeBuild/
+.cmake/
+
+# NDK
+obj/
+*.so
+*.o
+
+# Signing files
+*.jks
+*.keystore
+
+google-services.json
+
+# MacOS
+*.DS_Store
