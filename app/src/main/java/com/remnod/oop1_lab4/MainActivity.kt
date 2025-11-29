@@ -1,47 +1,46 @@
 package com.remnod.oop1_lab4
 
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.remnod.oop1_lab4.ui.theme.Oop1lab4Theme
 
-class MainActivity : ComponentActivity() {
+object PhysicsData {
+    var ax = 0f
+    var ay = 0f
+}
+
+class MainActivity : ComponentActivity(), SensorEventListener {
+
+    private lateinit var sensorManager: SensorManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            Oop1lab4Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+
+        val view = PhysicsView(this)
+        setContentView(view)
+
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        val accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+
+        if (accel != null) {
+            sensorManager.registerListener(this, accel, SensorManager.SENSOR_DELAY_GAME)
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    override fun onSensorChanged(event: SensorEvent?) {
+        event ?: return
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Oop1lab4Theme {
-        Greeting("Android")
+        PhysicsData.ax = event.values[0]
+        PhysicsData.ay = event.values[1]
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
+
+    override fun onPause() {
+        super.onPause()
+        sensorManager.unregisterListener(this)
     }
 }
