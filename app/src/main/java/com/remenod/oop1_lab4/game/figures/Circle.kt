@@ -58,4 +58,22 @@ class Circle(
         )
     }
 
+    override fun getPolygonPoints(): List<Pair<Float, Float>> {
+        val points = mutableListOf<Pair<Float, Float>>()
+        val count = 12
+        val step = (2 * Math.PI / count).toFloat()
+
+        for (i in 0 until count) {
+            val angle = i * step
+            points.add(
+                Pair(
+                    centerX + cos(angle) * radius,
+                    centerY + sin(angle) * radius
+                )
+            )
+        }
+        return points
+    }
+
+
 }

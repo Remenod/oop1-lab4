@@ -108,7 +108,7 @@ class MainActivity : ComponentActivity(), SensorEventListener {
         for (i in 0 until objects.size) {
             for (j in i + 1 until objects.size) {
                 if (objects[i].figure.intersects(objects[j].figure)) {
-                    GameObject.resolveCollision(objects[i], objects[j])
+                    PhysicsBody.resolveCollision(objects[i], objects[j])
                 }
             }
         }

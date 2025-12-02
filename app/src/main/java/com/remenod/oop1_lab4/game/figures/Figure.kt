@@ -21,4 +21,7 @@ abstract class Figure(
 
     // wall collision
     abstract fun bounds(): AABB
+
+    abstract fun getPolygonPoints(): List<Pair<Float, Float>>
+
 }

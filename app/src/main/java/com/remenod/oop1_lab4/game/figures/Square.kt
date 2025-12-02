@@ -53,4 +53,29 @@ class Square(
         )
     }
 
+    // more complicated formula for future grow
+    override fun getPolygonPoints(): List<Pair<Float, Float>> {
+        val hw = side / 2
+        val hh = side / 2
+
+        val cx = centerX
+        val cy = centerY
+        val a = 0f
+
+        val cosA = cos(a)
+        val sinA = sin(a)
+
+        fun rot(x: Float, y: Float): Pair<Float, Float> {
+            val rx = x * cosA - y * sinA
+            val ry = x * sinA + y * cosA
+            return Pair(cx + rx, cy + ry)
+        }
+
+        return listOf(
+            rot(-hw, -hh),
+            rot(+hw, -hh),
+            rot(+hw, +hh),
+            rot(-hw, +hh)
+        )
+    }
 }
