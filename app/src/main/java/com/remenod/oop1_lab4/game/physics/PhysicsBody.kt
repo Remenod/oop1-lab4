@@ -20,8 +20,8 @@ class PhysicsBody(
 ) {
 
     fun applyAccelerometer(dt: Float) {
-        vx -= PhysicsData.ax * 0.5f
-        vy += PhysicsData.ay * 0.5f
+        vx -= PhysicsData.ax * 0.5f / mass
+        vy += PhysicsData.ay * 0.5f / mass
     }
 
     fun update(figure: Figure, dt: Float) {
@@ -35,25 +35,26 @@ class PhysicsBody(
         // LEFT
         if (b.left < 0f) {
             figure.centerX -= b.left
-            vx = -vx * bounce
+            vx = -vx * (bounce * (1f / sqrt(mass)))
         }
 
         // RIGHT
         if (b.right > width) {
             figure.centerX -= (b.right - width)
-            vx = -vx * bounce
+            vx = -vx * (bounce * (1f / sqrt(mass)))
         }
 
         // TOP
         if (b.top < 0f) {
             figure.centerY -= b.top
-            vy = -vy * bounce
+            vy = -vy * (bounce * (1f / sqrt(mass)))
+
         }
 
         // BOTTOM
         if (b.bottom > height) {
             figure.centerY -= (b.bottom - height)
-            vy = -vy * bounce
+            vy = -vy * (bounce * (1f / sqrt(mass)))
         }
     }
 
@@ -117,7 +118,9 @@ class PhysicsBody(
             // weakening the force of the impulse so that they do not “explode”
             val impulseScale = 0.5f
 
-            val j = impulseScale *
+            val massFactor = 1f / sqrt((a.physics.mass + b.physics.mass) / 2f)
+
+            val j = impulseScale * massFactor *
                     (-(1 + e) * velAlongNormal) /
                     (1f / a.physics.mass + 1f / b.physics.mass)
 

@@ -42,8 +42,8 @@ class MainActivity : ComponentActivity(), SensorEventListener {
             PhysicsBody(0f, 0f, 1f, 0.8f)
         )
         objects += GameObject(
-            Square(500f, 400f, 130f),
-            PhysicsBody(0f, 0f, 1f, 0.8f)
+            Square(500f, 400f, 230f),
+            PhysicsBody(0f, 0f, 10f, 0.8f)
         )
         objects += GameObject(
             Rhomb(500f, 400f, 130f, 200f),
