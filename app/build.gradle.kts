@@ -5,13 +5,13 @@ plugins {
 }
 
 android {
-    namespace = "com.remnod.oop1_lab4"
+    namespace = "com.remenod.oop1_lab4"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.remnod.oop1_lab4"
+        applicationId = "com.remenod.oop1_lab4"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

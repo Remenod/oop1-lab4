@@ -1,4 +1,4 @@
-package com.remnod.oop1_lab4.ui.theme
+package com.remenod.oop1_lab4.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

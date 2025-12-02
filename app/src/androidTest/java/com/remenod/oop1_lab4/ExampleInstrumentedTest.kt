@@ -1,4 +1,4 @@
-package com.remnod.oop1_lab4
+package com.remenod.oop1_lab4
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.remnod.oop1_lab4", appContext.packageName)
+        assertEquals("com.remenod.oop1_lab4", appContext.packageName)
     }
 }

@@ -1,4 +1,4 @@
-package com.remnod.oop1_lab4
+package com.remenod.oop1_lab4
 
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -18,9 +18,6 @@ class MainActivity : ComponentActivity(), SensorEventListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val view = PhysicsView(this)
-        setContentView(view)
 
         sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
         val accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)

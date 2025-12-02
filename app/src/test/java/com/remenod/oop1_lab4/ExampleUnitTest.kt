@@ -1,4 +1,4 @@
-package com.remnod.oop1_lab4
+package com.remenod.oop1_lab4
 
 import org.junit.Test
 
