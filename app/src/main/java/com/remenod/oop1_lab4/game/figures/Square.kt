@@ -42,6 +42,6 @@ class Square(
                 abs(centerY - rhomb.centerY) < (halfA + halfH)
     }
 
-    override fun boundingRadius() = side / 1.4142f
+    override fun boundingRadius() = side / 2
 
 }

@@ -9,6 +9,8 @@ import androidx.activity.ComponentActivity
 import com.remenod.oop1_lab4.game.GameObject
 import com.remenod.oop1_lab4.game.GameView
 import com.remenod.oop1_lab4.game.figures.Circle
+import com.remenod.oop1_lab4.game.figures.Rhomb
+import com.remenod.oop1_lab4.game.figures.Square
 import com.remenod.oop1_lab4.game.physics.PhysicsBody
 
 object PhysicsData {
@@ -37,6 +39,14 @@ class MainActivity : ComponentActivity(), SensorEventListener {
 
         objects += GameObject(
             Circle(500f, 400f, 70f),
+            PhysicsBody(0f, 0f, 1f, 0.8f)
+        )
+        objects += GameObject(
+            Square(500f, 400f, 130f),
+            PhysicsBody(0f, 0f, 1f, 0.8f)
+        )
+        objects += GameObject(
+            Rhomb(500f, 400f, 130f, 200f),
             PhysicsBody(0f, 0f, 1f, 0.8f)
         )
 
