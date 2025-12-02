@@ -51,4 +51,6 @@ class Rhomb(
         return abs(centerX - rhomb.centerX) < halfW &&
                 abs(centerY - rhomb.centerY) < halfH
     }
+
+    override fun boundingRadius() = max(horDiag, vertDiag) / 2
 }

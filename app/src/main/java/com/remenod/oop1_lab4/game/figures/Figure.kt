@@ -17,4 +17,7 @@ abstract class Figure(
     abstract fun intersectsCircle(circle: Circle): Boolean
     abstract fun intersectsSquare(square: Square): Boolean
     abstract fun intersectsRhomb(rhomb: Rhomb): Boolean
+
+    // wall collision
+    abstract fun boundingRadius(): Float
 }

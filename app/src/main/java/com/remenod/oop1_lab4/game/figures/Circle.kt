@@ -47,4 +47,6 @@ class Circle(
         val dy = abs(centerY - rhomb.centerY)
         return (dx < halfW + radius) && (dy < halfH + radius)
     }
+
+    override fun boundingRadius() = radius
 }
