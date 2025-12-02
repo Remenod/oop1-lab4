@@ -3,6 +3,7 @@ package com.remenod.oop1_lab4.game.figures
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
+import com.remenod.oop1_lab4.game.physics.AABB
 import kotlin.math.*
 
 class Rhomb(
@@ -52,5 +53,13 @@ class Rhomb(
                 abs(centerY - rhomb.centerY) < halfH
     }
 
-    override fun boundingRadius() = max(horDiag, vertDiag) / 2
+    override fun bounds(): AABB {
+        return AABB(
+            centerX - horDiag / 2,
+            centerY - vertDiag / 2,
+            centerX + horDiag / 2,
+            centerY + vertDiag / 2
+        )
+    }
+
 }

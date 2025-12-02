@@ -2,6 +2,7 @@ package com.remenod.oop1_lab4.game.figures
 
 import android.graphics.Canvas
 import android.graphics.Paint
+import com.remenod.oop1_lab4.game.physics.AABB
 import kotlin.math.*
 
 class Circle(
@@ -48,5 +49,13 @@ class Circle(
         return (dx < halfW + radius) && (dy < halfH + radius)
     }
 
-    override fun boundingRadius() = radius
+    override fun bounds(): AABB {
+        return AABB(
+            centerX - radius,
+            centerY - radius,
+            centerX + radius,
+            centerY + radius
+        )
+    }
+
 }

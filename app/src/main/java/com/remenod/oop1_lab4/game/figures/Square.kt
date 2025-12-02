@@ -2,6 +2,7 @@ package com.remenod.oop1_lab4.game.figures
 
 import android.graphics.Canvas
 import android.graphics.Paint
+import com.remenod.oop1_lab4.game.physics.AABB
 import kotlin.math.*
 
 class Square(
@@ -42,6 +43,14 @@ class Square(
                 abs(centerY - rhomb.centerY) < (halfA + halfH)
     }
 
-    override fun boundingRadius() = side / 2
+    override fun bounds(): AABB {
+        val h = side / 2
+        return AABB(
+            centerX - h,
+            centerY - h,
+            centerX + h,
+            centerY + h
+        )
+    }
 
 }

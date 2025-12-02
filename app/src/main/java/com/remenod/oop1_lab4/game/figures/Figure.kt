@@ -2,6 +2,7 @@ package com.remenod.oop1_lab4.game.figures
 
 import android.graphics.Canvas
 import android.graphics.Paint
+import com.remenod.oop1_lab4.game.physics.AABB
 
 abstract class Figure(
     var centerX: Float,
@@ -19,5 +20,5 @@ abstract class Figure(
     abstract fun intersectsRhomb(rhomb: Rhomb): Boolean
 
     // wall collision
-    abstract fun boundingRadius(): Float
+    abstract fun bounds(): AABB
 }
