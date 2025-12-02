@@ -1,5 +1,6 @@
 package com.remenod.oop1_lab4.game.physics
 
+import com.remenod.oop1_lab4.PhysicsData
 import com.remenod.oop1_lab4.game.figures.Figure
 
 class PhysicsBody(
@@ -9,33 +10,37 @@ class PhysicsBody(
     var bounce: Float = 0.8f
 ) {
 
-    fun update(figure: Figure, dt: Float) {
-        figure.centerX += vx * dt
-        figure.centerY += vy * dt
+    fun applyAccelerometer(dt: Float) {
+        vx -= PhysicsData.ax * 0.5f
+        vy += PhysicsData.ay * 0.5f
     }
 
-    fun applyGravity(g: Float, dt: Float) {
-        vy += g * dt
+    fun update(figure: Figure, dt: Float) {
+        figure.centerX += vx
+        figure.centerY += vy
     }
 
     fun bounceFromWalls(figure: Figure, width: Float, height: Float) {
         val r = figure.boundingRadius()
 
-        if (figure.centerX - r < 0f && vx < 0) {
+        if (figure.centerX < r) {
             figure.centerX = r
-            vx = -vx * bounce
+            vx *= -bounce
         }
-        if (figure.centerX + r > width && vx > 0) {
+
+        if (figure.centerX > width - r) {
             figure.centerX = width - r
-            vx = -vx * bounce
+            vx *= -bounce
         }
-        if (figure.centerY - r < 0f && vy < 0) {
+
+        if (figure.centerY < r) {
             figure.centerY = r
-            vy = -vy * bounce
+            vy *= -bounce
         }
-        if (figure.centerY + r > height && vy > 0) {
+
+        if (figure.centerY > height - r) {
             figure.centerY = height - r
-            vy = -vy * bounce
+            vy *= -bounce
         }
     }
 }
