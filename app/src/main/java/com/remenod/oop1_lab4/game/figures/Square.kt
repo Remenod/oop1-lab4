@@ -8,7 +8,7 @@ import kotlin.math.*
 class Square(
     centerX: Float,
     centerY: Float,
-    val side: Float
+    var side: Float
 ) : Figure(centerX, centerY) {
     override fun drawBlack(canvas: Canvas, paint: Paint) {
         val half = side / 2
@@ -77,5 +77,13 @@ class Square(
             rot(+hw, +hh),
             rot(-hw, +hh)
         )
+    }
+
+    override fun containsPoint(x: Float, y: Float): Boolean {
+        val half = side / 2f
+        return x >= centerX - half &&
+                x <= centerX + half &&
+                y >= centerY - half &&
+                y <= centerY + half
     }
 }

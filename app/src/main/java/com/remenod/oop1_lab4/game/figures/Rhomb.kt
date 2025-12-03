@@ -9,8 +9,8 @@ import kotlin.math.*
 class Rhomb(
     centerX: Float,
     centerY: Float,
-    val horDiag: Float,
-    val vertDiag: Float
+    var horDiag: Float,
+    var vertDiag: Float
 ) : Figure(centerX, centerY) {
 
     override fun drawBlack(canvas: Canvas, paint: Paint) {
@@ -86,5 +86,22 @@ class Rhomb(
             rot(+hw, +hh),
             rot(-hw, +hh)
         )
+    }
+
+    override fun containsPoint(x: Float, y: Float): Boolean {
+        val pts = getPolygonPoints()
+        var inside = false
+        var j = pts.size - 1
+        for (i in pts.indices) {
+            val xi = pts[i].first
+            val yi = pts[i].second
+            val xj = pts[j].first
+            val yj = pts[j].second
+            val intersect = ((yi > y) != (yj > y)) &&
+                    (x < (xj - xi) * (y - yi) / (yj - yi + 0.00001f) + xi)
+            if (intersect) inside = !inside
+            j = i
+        }
+        return inside
     }
 }

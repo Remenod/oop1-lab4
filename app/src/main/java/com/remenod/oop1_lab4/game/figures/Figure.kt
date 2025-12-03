@@ -24,4 +24,5 @@ abstract class Figure(
 
     abstract fun getPolygonPoints(): List<Pair<Float, Float>>
 
+    abstract fun containsPoint(x: Float, y: Float): Boolean
 }

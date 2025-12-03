@@ -8,7 +8,7 @@ import kotlin.math.*
 class Circle(
     centerX: Float,
     centerY: Float,
-    val radius: Float
+    var radius: Float
 ) : Figure(centerX, centerY) {
     override fun drawBlack(canvas: Canvas, paint: Paint) {
         canvas.drawCircle(centerX, centerY, radius, paint)
@@ -75,5 +75,9 @@ class Circle(
         return points
     }
 
-
+    override fun containsPoint(x: Float, y: Float): Boolean {
+        val dx = x - centerX
+        val dy = y - centerY
+        return dx*dx + dy*dy <= radius*radius
+    }
 }
